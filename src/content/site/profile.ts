@@ -7,7 +7,7 @@ export const profile = {
   detail:
     "I care about technical writing, product-minded engineering, and interfaces that feel simple without feeling empty.",
   education: {
-    institution: "Istanubul University",
+    institution: "Istanbul University",
     degree: "B.S. Computer Science",
     period: "2023-2027"
   },
