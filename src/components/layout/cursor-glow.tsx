@@ -38,10 +38,14 @@ export function CursorGlow() {
       return;
     }
 
+    const supportsMask =
+      typeof window.CSS !== "undefined" &&
+      (window.CSS.supports("mask-image", "radial-gradient(black, transparent)") ||
+        window.CSS.supports("-webkit-mask-image", "radial-gradient(black, transparent)"));
     const finePointer = window.matchMedia("(pointer: fine)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    if (!finePointer.matches || reducedMotion.matches) {
+    if (!supportsMask || !finePointer.matches || reducedMotion.matches) {
       element.style.display = "none";
       return;
     }

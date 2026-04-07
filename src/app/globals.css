@@ -61,7 +61,7 @@
   html {
     color-scheme: dark;
     @apply scroll-smooth bg-bg text-text;
-    overflow-x: clip;
+    overflow-x: hidden;
   }
 
   html[data-theme="light"] {
@@ -75,7 +75,7 @@
     font-feature-settings: "liga" 1, "calt" 1;
     font-kerning: normal;
     text-rendering: optimizeLegibility;
-    overflow-x: clip;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -106,7 +106,7 @@
 @layer components {
   .type-display {
     font-family: var(--font-display), var(--font-sans), sans-serif;
-    text-wrap: balance;
+    overflow-wrap: anywhere;
     @apply text-[2.1rem] font-semibold tracking-[-0.065em] text-text sm:text-[2.5rem] lg:text-[3rem];
   }
 
@@ -181,6 +181,24 @@
 
   .ascii-overlay--active {
     opacity: var(--ascii-opacity);
+  }
+}
+
+@supports (overflow: clip) {
+  @layer base {
+    html,
+    body {
+      overflow-x: clip;
+    }
+  }
+}
+
+@supports (text-wrap: balance) {
+  @layer components {
+    .type-display {
+      overflow-wrap: normal;
+      text-wrap: balance;
+    }
   }
 }
 
