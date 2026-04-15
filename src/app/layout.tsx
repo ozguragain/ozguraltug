@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 
 import { SiteShell } from "@/components/layout/site-shell";
 import { themeScript } from "@/lib/theme";
@@ -10,14 +10,7 @@ import "./globals.css";
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-mono",
-  display: "swap"
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
+  variable: "--font-ibm-plex-mono",
   display: "swap"
 });
 
@@ -36,8 +29,8 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body className={ibmPlexMono.variable}>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <SiteShell>{children}</SiteShell>
       </body>

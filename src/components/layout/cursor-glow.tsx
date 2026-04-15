@@ -17,7 +17,7 @@ function makeAscii(cols: number, rows: number, time: number) {
       const normalized = (wave + 3) / 6;
       const index = Math.min(
         CHARS.length - 1,
-        Math.max(0, Math.floor(normalized * CHARS.length))
+        Math.max(0, Math.floor(normalized * CHARS.length)),
       );
 
       output += CHARS[index];
@@ -40,8 +40,14 @@ export function CursorGlow() {
 
     const supportsMask =
       typeof window.CSS !== "undefined" &&
-      (window.CSS.supports("mask-image", "radial-gradient(black, transparent)") ||
-        window.CSS.supports("-webkit-mask-image", "radial-gradient(black, transparent)"));
+      (window.CSS.supports(
+        "mask-image",
+        "radial-gradient(black, transparent)",
+      ) ||
+        window.CSS.supports(
+          "-webkit-mask-image",
+          "radial-gradient(black, transparent)",
+        ));
     const finePointer = window.matchMedia("(pointer: fine)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -58,15 +64,15 @@ export function CursorGlow() {
 
     const current = {
       x: window.innerWidth / 2,
-      y: window.innerHeight / 2
+      y: window.innerHeight / 2,
     };
 
     const target = {
       x: current.x,
-      y: current.y
+      y: current.y,
     };
 
-    const updateField = (x: number, y: number, radius = 16) => {
+    const updateField = (x: number, y: number, radius = 8) => {
       element.style.setProperty("--ascii-x", `${x}px`);
       element.style.setProperty("--ascii-y", `${y}px`);
       element.style.setProperty("--ascii-radius", `${radius}rem`);
@@ -75,7 +81,9 @@ export function CursorGlow() {
     const measure = (time: number) => {
       const computed = window.getComputedStyle(element);
       const fontSize = Number.parseFloat(computed.fontSize || "14");
-      const lineHeight = Number.parseFloat(computed.lineHeight || `${fontSize * 1.2}`);
+      const lineHeight = Number.parseFloat(
+        computed.lineHeight || `${fontSize * 1.2}`,
+      );
       const charWidth = fontSize * 0.62;
       const columns = Math.ceil(window.innerWidth / charWidth) + 2;
       const rows = Math.ceil(window.innerHeight / lineHeight) + 2;
@@ -88,7 +96,12 @@ export function CursorGlow() {
       current.x += (target.x - current.x) * 0.16;
       current.y += (target.y - current.y) * 0.16;
 
-      updateField(current.x, current.y, Number.parseFloat(element.style.getPropertyValue("--ascii-radius")) || 16);
+      updateField(
+        current.x,
+        current.y,
+        Number.parseFloat(element.style.getPropertyValue("--ascii-radius")) ||
+8,
+      );
       element.style.opacity = isVisible ? "1" : "0";
 
       if (time - lastMeasure > 160) {
@@ -105,7 +118,7 @@ export function CursorGlow() {
         ? Math.max(16, event.timeStamp - lastPointerTimestamp)
         : 16;
       const velocity = Math.hypot(deltaX, deltaY) / deltaTime;
-      const radius = Math.min(19.5, Math.max(14.5, 15 + velocity * 2.2));
+      const radius = Math.min(9.75, Math.max(7.25, 7.5 + velocity * 1.1));
 
       target.x = event.clientX;
       target.y = event.clientY;
@@ -139,7 +152,9 @@ export function CursorGlow() {
     updateField(current.x, current.y);
     animationFrame = window.requestAnimationFrame(render);
 
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointermove", handlePointerMove, {
+      passive: true,
+    });
     window.addEventListener("pointerleave", handlePointerLeave);
     window.addEventListener("resize", handleResize);
     window.addEventListener("blur", handlePointerLeave);

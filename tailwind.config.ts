@@ -22,17 +22,8 @@ const config: Config = {
         lg: "var(--radius-lg)"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: [
-          "var(--font-mono)",
-          "ui-monospace",
-          "SFMono-Regular",
-          "Menlo",
-          "Monaco",
-          "Consolas",
-          "Liberation Mono",
-          "monospace"
-        ]
+        sans: ["var(--font-ibm-plex-mono)", "IBM Plex Mono", "monospace"],
+        mono: ["IBM Plex Mono", "monospace"]
       },
       maxWidth: {
         shell: "var(--max-width-shell)",

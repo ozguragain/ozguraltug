@@ -9,7 +9,7 @@ import { ThemeToggle } from "../theme/theme-toggle";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-bg/88 backdrop-blur-md">
+    <header className="sticky top-0 z-50 site-header">
       <Container size="content">
         <div className="hidden min-h-[var(--header-height)] items-center md:flex">
           <div className="mx-auto flex w-full max-w-[var(--max-width-frame)] items-center justify-between">

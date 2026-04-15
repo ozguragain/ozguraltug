@@ -21,7 +21,7 @@ export function ExperienceList({ items }: ExperienceListProps) {
               {item.period}
             </p>
           </div>
-          <p className="max-w-3xl text-[0.94rem] leading-8 text-text-muted sm:text-[0.98rem]">
+          <p className="max-w-3xl text-[0.94rem] font-bold leading-8 text-text/72 sm:text-[0.98rem]">
             {item.role}
           </p>
         </article>
