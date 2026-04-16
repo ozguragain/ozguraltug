@@ -49,7 +49,7 @@ export function MobileNav({ items }: MobileNavProps) {
           <SiteNav
             items={items}
             orientation="vertical"
-            onNavigate={() => setOpen(false)}
+            onNavigateAction={() => setOpen(false)}
           />
         </div>
       </div>

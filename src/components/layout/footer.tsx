@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import { navigationItems } from "@/content/site/navigation";
@@ -6,6 +9,13 @@ import { profile } from "@/content/site/profile";
 import { Container } from "./container";
 
 export function Footer() {
+  const pathname = usePathname();
+  const isEditorRoute = pathname?.startsWith("/writing/");
+
+  if (isEditorRoute) {
+    return null;
+  }
+
   return (
     <footer className="py-16 sm:py-20">
       <Container size="content">

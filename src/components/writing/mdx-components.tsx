@@ -1,3 +1,4 @@
+import type { ReactNode, ComponentType } from "react";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import type { Options as PrettyCodeOptions } from "rehype-pretty-code";
@@ -10,10 +11,12 @@ const prettyCodeOptions: PrettyCodeOptions = {
 
 export async function compileMdxContent(
   content: string,
-  frontmatter: PostFrontmatter
+  frontmatter: PostFrontmatter,
+  components?: Record<string, ComponentType<Record<string, unknown>>>
 ) {
   const result = await compileMDX({
     source: content,
+    components,
     options: {
       mdxOptions: {
         rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
@@ -35,7 +38,7 @@ export const mdxComponents = {
     <h3>{children}</h3>
   ),
   p: ({ children }: { children: React.ReactNode }) => (
-    <p>{children}</p>
+    <p className="whitespace-pre-wrap">{children}</p>
   ),
   ul: ({ children }: { children: React.ReactNode }) => (
     <ul className="list-inside list-disc">{children}</ul>

@@ -13,6 +13,7 @@ build/
 
 # TypeScript
 *.tsbuildinfo
+next-env.d.ts
 
 # Coverage
 coverage/
@@ -20,7 +21,6 @@ coverage/
 # Environment variables
 .env
 .env.*
-!.env.example
 
 # Deployment and local platform files
 .vercel/
