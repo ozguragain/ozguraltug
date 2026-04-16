@@ -20,7 +20,7 @@ export default async function EditPostPage({ params }: PageProps) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/api/writing/${slug}`,
+      `/api/writing/${slug}`,
       { cache: "no-store" }
     );
 

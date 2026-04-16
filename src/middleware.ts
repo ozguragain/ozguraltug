@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 const AUTH_COOKIE_NAME = "editor_auth";
 const PROTECTED_PATHS = ["/writing/new", "/writing/edit"];
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isProtectedPath = PROTECTED_PATHS.some((path) =>
     pathname.startsWith(path)
