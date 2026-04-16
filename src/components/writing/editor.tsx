@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 import CodeMirror from "@uiw/react-codemirror";
 import { markdown } from "@codemirror/lang-markdown";
 import { compileMdxContent, mdxComponents } from "@/components/writing/mdx-components";
@@ -37,6 +38,7 @@ export function Editor({
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const router = useRouter();
 
   const generateSlug = useCallback((title: string) => {
     return title
@@ -89,6 +91,7 @@ export function Editor({
         throw new Error(error.error || "Failed to save");
       }
       setMessage({ type: "success", text: "Post saved successfully!" });
+      router.push(`/writing/${slug}`);
     } catch (err) {
       setMessage({
         type: "error",
@@ -96,6 +99,31 @@ export function Editor({
       });
     }
     setIsSaving(false);
+  };
+
+  const handleDelete = async () => {
+    if (!slug) return;
+    if (!window.confirm(`Are you sure you want to delete "${frontmatter.title}"?`)) {
+      return;
+    }
+    setIsSaving(true);
+    setMessage(null);
+    try {
+      const response = await fetch(`/api/writing/${slug}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to delete");
+      }
+      window.location.href = "/writing";
+    } catch (err) {
+      setMessage({
+        type: "error",
+        text: err instanceof Error ? err.message : "Failed to delete post",
+      });
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -128,6 +156,15 @@ export function Editor({
           >
             {isSaving ? "Saving..." : "Save"}
           </button>
+          {initialSlug && (
+            <button
+              onClick={handleDelete}
+              disabled={isSaving}
+              className="rounded border border-red-500/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-red-500 transition-colors hover:border-red-500 hover:bg-red-500/10 disabled:opacity-50"
+            >
+              {isSaving ? "Deleting..." : "Delete"}
+            </button>
+          )}
         </div>
       </div>
 

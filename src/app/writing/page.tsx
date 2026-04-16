@@ -63,7 +63,7 @@ export default async function WritingPage() {
                   </div>
                   <div className="py-2">
                     {posts.map((post) => (
-                      <PostCard key={post.slug} post={post} />
+                      <PostCard key={post.slug} post={post} showEditLink={isAuthenticated} />
                     ))}
                   </div>
                   <div className="border-t border-border/40 pt-4">

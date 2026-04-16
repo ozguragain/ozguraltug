@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createOrUpdateFile, createGitHubConfig } from "@/lib/github";
+import { revalidatePath } from "next/cache";
+import fs from "fs";
+import path from "path";
+
+const CONTENT_DIR = path.join(process.cwd(), "src/content/writing");
 
 export async function POST(request: NextRequest) {
   try {
@@ -33,6 +38,14 @@ ${content}`;
       },
       `chore: ${frontmatter.title ? `Update "${frontmatter.title}"` : `Create "${slug}"`} post via editor`
     );
+
+    if (!fs.existsSync(CONTENT_DIR)) {
+      fs.mkdirSync(CONTENT_DIR, { recursive: true });
+    }
+    fs.writeFileSync(path.join(CONTENT_DIR, filename), frontmatterStr);
+
+    revalidatePath("/writing");
+    revalidatePath(`/writing/${slug}`);
 
     return NextResponse.json({ success: true, slug });
   } catch (error) {

@@ -58,8 +58,9 @@ export async function getFileContent(
   path: string
 ): Promise<string | null> {
   try {
+    const fullPath = `${CONTENT_PATH}/${path}`;
     const data = await githubFetch<{ content: string; encoding: string }>(
-      `/repos/${config.owner}/${config.repo}/contents/${path}?ref=${config.branch}`,
+      `/repos/${config.owner}/${config.repo}/contents/${fullPath}?ref=${config.branch}`,
       config
     );
     if (data.encoding === "base64") {
