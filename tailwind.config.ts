@@ -22,7 +22,6 @@ const config: Config = {
         lg: "var(--radius-lg)"
       },
       fontFamily: {
-        sans: ["var(--font-ibm-plex-mono)", "IBM Plex Mono", "monospace"],
         mono: ["IBM Plex Mono", "monospace"]
       },
       maxWidth: {
@@ -30,17 +29,11 @@ const config: Config = {
         content: "var(--max-width-content)",
         prose: "var(--max-width-prose)"
       },
-      boxShadow: {
-        shell: "0 18px 60px hsla(220, 20%, 2%, 0.32)",
-        focus: "0 0 0 3px hsl(var(--color-ring) / 0.24)"
-      },
       spacing: {
-        18: "4.5rem",
-        22: "5.5rem",
         shell: "var(--space-shell)"
       },
       transitionTimingFunction: {
-        productive: "cubic-bezier(0.22, 1, 0.36, 1)"
+        "ease-out-strong": "cubic-bezier(0.22, 1, 0.36, 1)"
       }
     }
   },

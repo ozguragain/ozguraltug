@@ -50,7 +50,7 @@ function LoginForm() {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mt-2 w-full rounded border border-border/60 bg-transparent px-3 py-2 font-mono text-[0.92rem] text-text focus:border-text-muted focus:outline-none"
+          className="mt-2 w-full rounded border border-border/60 bg-transparent px-3 py-2 font-mono text-[0.92rem] text-text transition-colors duration-150 ease-out focus:border-text-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           placeholder="Enter password..."
           autoFocus
         />
@@ -63,7 +63,7 @@ function LoginForm() {
       <button
         type="submit"
         disabled={isLoading || !password}
-        className="rounded bg-text px-4 py-2 font-mono text-[0.82rem] font-bold text-bg transition-opacity hover:opacity-80 disabled:opacity-50"
+        className="pressable rounded bg-text px-4 py-2 font-mono text-[0.82rem] font-bold text-bg transition-opacity duration-200 ease-out hover:opacity-80 disabled:opacity-50"
       >
         {isLoading ? "Authenticating..." : "Login"}
       </button>

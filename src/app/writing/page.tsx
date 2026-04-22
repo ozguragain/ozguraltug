@@ -32,7 +32,7 @@ export default async function WritingPage() {
               {isAuthenticated && (
                 <Link
                   href="/writing/new"
-                  className="inline-block rounded border border-border/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted transition-colors hover:border-text-muted hover:text-text"
+                  className="pressable inline-block rounded border border-border/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted transition-colors duration-200 ease-out hover:border-text-muted hover:text-text"
                 >
                   + new post
                 </Link>
@@ -63,7 +63,9 @@ export default async function WritingPage() {
                   </div>
                   <div className="py-2">
                     {posts.map((post) => (
-                      <PostCard key={post.slug} post={post} showEditLink={isAuthenticated} />
+                      <div key={post.slug} className="stagger-item">
+                        <PostCard post={post} showEditLink={isAuthenticated} />
+                      </div>
                     ))}
                   </div>
                   <div className="border-t border-border/40 pt-4">

@@ -29,7 +29,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body className={ibmPlexMono.variable}>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <SiteShell>{children}</SiteShell>

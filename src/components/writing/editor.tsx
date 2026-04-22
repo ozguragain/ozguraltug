@@ -135,7 +135,7 @@ export function Editor({
             value={frontmatter.title}
             onChange={(e) => handleTitleChange(e.target.value)}
             placeholder="Post title..."
-            className="bg-transparent font-mono text-[0.92rem] font-bold text-text/72 placeholder:text-text-muted focus:outline-none sm:text-[0.96rem]"
+            className="bg-transparent font-mono text-[0.92rem] font-bold text-text/72 placeholder:text-text-muted transition-colors duration-150 ease-out focus:outline-none sm:text-[0.96rem]"
           />
           <span className="font-mono text-[0.78rem] text-text-muted">
             {slug && `${slug}.mdx`}
@@ -145,14 +145,14 @@ export function Editor({
           <button
             onClick={updatePreview}
             disabled={isLoading}
-            className="rounded border border-border/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted transition-colors hover:border-text-muted hover:text-text disabled:opacity-50"
+            className="pressable rounded border border-border/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted transition-colors duration-200 ease-out hover:border-text-muted hover:text-text disabled:opacity-50"
           >
             {isLoading ? "Loading..." : "Preview"}
           </button>
           <button
             onClick={handleSave}
             disabled={isSaving || !slug}
-            className="rounded bg-text px-3 py-1.5 font-mono text-[0.78rem] font-bold text-bg transition-opacity hover:opacity-80 disabled:opacity-50"
+            className="pressable rounded bg-text px-3 py-1.5 font-mono text-[0.78rem] font-bold text-bg transition-opacity duration-200 ease-out hover:opacity-80 disabled:opacity-50"
           >
             {isSaving ? "Saving..." : "Save"}
           </button>
@@ -160,7 +160,7 @@ export function Editor({
             <button
               onClick={handleDelete}
               disabled={isSaving}
-              className="rounded border border-red-500/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-red-500 transition-colors hover:border-red-500 hover:bg-red-500/10 disabled:opacity-50"
+              className="pressable rounded border border-red-500/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-red-500 transition-colors duration-200 ease-out hover:border-red-500 hover:bg-red-500/10 disabled:opacity-50"
             >
               {isSaving ? "Deleting..." : "Delete"}
             </button>
@@ -197,7 +197,7 @@ export function Editor({
                       date: e.target.value,
                     }))
                   }
-                  className="mt-1 w-full rounded border border-border/60 bg-transparent px-2 py-1 font-mono text-[0.82rem] text-text focus:border-text-muted focus:outline-none"
+                  className="mt-1 w-full rounded border border-border/60 bg-transparent px-2 py-1 font-mono text-[0.82rem] text-text transition-colors duration-150 ease-out focus:border-text-muted focus:outline-none"
                 />
               </div>
               <div>
@@ -217,7 +217,7 @@ export function Editor({
                     }))
                   }
                   placeholder="go, cli, tools"
-                  className="mt-1 w-full rounded border border-border/60 bg-transparent px-2 py-1 font-mono text-[0.82rem] text-text placeholder:text-text-muted focus:border-text-muted focus:outline-none"
+                  className="mt-1 w-full rounded border border-border/60 bg-transparent px-2 py-1 font-mono text-[0.82rem] text-text placeholder:text-text-muted transition-colors duration-150 ease-out focus:border-text-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 />
               </div>
             </div>

@@ -27,7 +27,7 @@ export function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="font-mono text-[1rem] text-text-muted transition-colors duration-200 ease-productive hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="pressable font-mono text-[1rem] text-text-muted transition-colors duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </Link>
@@ -44,7 +44,7 @@ export function Footer() {
                       href={item.href}
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noreferrer" : undefined}
-                      className="font-mono text-[1rem] text-text-muted transition-colors duration-200 ease-productive hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="pressable font-mono text-[1rem] text-text-muted transition-colors duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </Link>

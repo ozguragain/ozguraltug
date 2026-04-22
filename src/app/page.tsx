@@ -20,10 +20,10 @@ export default function HomePage() {
                     {profile.name}
                   </h1>
                   <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-mono text-[0.92rem] font-medium tracking-[-0.035em] text-text-prose sm:text-[0.98rem]">
+                    <p className="font-mono text-[0.92rem] font-medium tracking-[-0.02em] text-text-prose sm:text-[0.98rem]">
                       {profile.role}
                     </p>
-                    <span className="rounded-sm bg-bg-muted px-2 py-1 font-mono text-[0.8rem] tracking-[-0.02em] text-text/72 sm:text-[0.84rem]">
+                    <span className="rounded-sm bg-bg-muted px-2 py-1 font-mono text-[0.8rem] font-medium tracking-[-0.02em] text-text/80 sm:text-[0.84rem]">
                       {profile.pronouns}
                     </span>
                   </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noreferrer" : undefined}
-                        className="font-mono text-[0.82rem] tracking-[-0.03em] text-text transition-colors duration-200 ease-productive hover:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="pressable font-mono text-[0.82rem] tracking-[-0.02em] text-text transition-colors duration-200 ease-out hover:text-text-muted"
                       >
                         {item.label}
                       </Link>
@@ -48,8 +48,8 @@ export default function HomePage() {
                 </ul>
               </div>
 
-              <div className="enter-rise-delayed mx-auto w-full max-w-[13.75rem] lg:mx-0 lg:justify-self-end">
-                <div className="portrait-shell group aspect-[10/13] overflow-hidden border border-border/80 transition-transform duration-300 ease-productive hover:-translate-y-1">
+                <div className="enter-rise-delayed stagger-item mx-auto w-full max-w-[13.75rem] lg:mx-0 lg:justify-self-end">
+                <div className="portrait-shell group aspect-[10/13] overflow-hidden border border-border/80 transition-transform duration-300 ease-out-strong hover:-translate-y-1">
                   <BezierWaves />
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function HomePage() {
           <div className="mx-auto w-full max-w-[var(--max-width-frame)] border-t border-border/70 pt-10">
             <article className="space-y-2">
               <div className="flex items-baseline gap-3">
-                <h3 className="shrink-0 font-mono text-[0.88rem] font-medium tracking-[-0.03em] text-text sm:text-[0.98rem]">
+                <h3 className="shrink-0 font-mono text-[0.88rem] font-semibold tracking-[-0.02em] text-text sm:text-[0.98rem]">
                   {profile.education.institution}
                 </h3>
                 <span

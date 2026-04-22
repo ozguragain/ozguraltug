@@ -53,7 +53,7 @@ export default async function PostPage({ params }: PageProps) {
               <div className="flex items-center gap-2">
                 <Link
                   href="/writing"
-                  className="font-mono text-[0.82rem] font-bold text-text-muted transition-colors hover:text-text"
+                  className="pressable font-mono text-[0.82rem] font-bold text-text-muted transition-colors duration-200 ease-out hover:text-text"
                 >
                   ← back
                 </Link>

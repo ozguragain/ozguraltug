@@ -42,7 +42,7 @@ export function SiteNav({
                 onClick={onNavigateAction}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "inline-flex min-h-9 items-center rounded-md px-2 py-1.5 font-mono text-[0.8rem] font-semibold lowercase tracking-[-0.03em] transition-colors duration-200 ease-productive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-2.5",
+                  "pressable inline-flex min-h-9 items-center rounded-md px-2 py-1.5 font-mono text-[0.8rem] font-semibold lowercase tracking-[-0.02em] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-2.5",
                   isActive
                     ? "bg-text text-bg"
                     : "text-text/92 hover:text-text"
