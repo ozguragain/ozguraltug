@@ -16,7 +16,7 @@ export default function HomePage() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,27.5rem)_13.75rem] lg:items-start lg:justify-between">
               <div className="enter-rise space-y-8 lg:pt-2">
                 <div className="space-y-4">
-                  <h1 className="type-display whitespace-nowrap">
+                  <h1 className="type-display">
                     {profile.name}
                   </h1>
                   <div className="flex flex-wrap items-center gap-3">
@@ -39,7 +39,7 @@ export default function HomePage() {
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noreferrer" : undefined}
-                        className="pressable font-mono text-[0.82rem] tracking-[-0.02em] text-text transition-colors duration-200 ease-out hover:text-text-muted"
+                        className="pressable font-mono text-[0.82rem] tracking-[-0.02em] text-text transition-[color,transform] duration-200 ease-out hover:text-text-muted"
                       >
                         {item.label}
                       </Link>
@@ -79,7 +79,7 @@ export default function HomePage() {
                 </h3>
                 <span
                   aria-hidden="true"
-                  className="hidden flex-1 border-b border-dotted border-text-muted/60 md:block"
+                  className="hidden flex-1 shadow-[inset_0_-1px_0_0_hsl(var(--color-text-muted)/0.6)] md:block"
                 />
                 <p className="shrink-0 font-mono text-[0.82rem] text-text-muted sm:text-[0.9rem]">
                   {profile.education.period}

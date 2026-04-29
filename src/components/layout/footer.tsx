@@ -19,7 +19,7 @@ export function Footer() {
   return (
     <footer className="py-16 sm:py-20">
       <Container size="content">
-        <div className="mx-auto w-full max-w-[var(--max-width-frame)] space-y-10 border-t border-border/70 pt-10">
+        <div className="mx-auto w-full max-w-[var(--max-width-frame)] space-y-10 shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.7)] pt-10">
           <div className="grid gap-10 sm:grid-cols-2">
             <nav aria-label="Footer">
               <ul className="space-y-5">
@@ -27,7 +27,7 @@ export function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="pressable font-mono text-[1rem] text-text-muted transition-colors duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="pressable font-mono text-[1rem] text-text-muted transition-[color,transform] duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </Link>
@@ -44,7 +44,7 @@ export function Footer() {
                       href={item.href}
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noreferrer" : undefined}
-                      className="pressable font-mono text-[1rem] text-text-muted transition-colors duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="pressable font-mono text-[1rem] text-text-muted transition-[color,transform] duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </Link>

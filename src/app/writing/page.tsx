@@ -32,14 +32,14 @@ export default async function WritingPage() {
               {isAuthenticated && (
                 <Link
                   href="/writing/new"
-                  className="pressable inline-block rounded border border-border/60 px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted transition-colors duration-200 ease-out hover:border-text-muted hover:text-text"
+                  className="pressable inline-block rounded shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted transition-[color,box-shadow,transform] duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
                 >
                   + new post
                 </Link>
               )}
             </div>
 
-            <div className="border-t border-border/60 pt-6">
+            <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.6)] pt-6">
               {posts.length === 0 ? (
                 <div className="space-y-2 py-8">
                   <p className="font-mono text-[0.88rem] font-bold text-text-muted">
@@ -51,7 +51,7 @@ export default async function WritingPage() {
                 </div>
               ) : (
                 <>
-                  <div className="border-b border-border/40 pb-3">
+                  <div className="shadow-[inset_0_-1px_0_0_hsl(var(--color-border)/0.4)] pb-3">
                     <div className="flex items-baseline justify-between gap-4">
                       <span className="font-mono text-[0.72rem] uppercase tracking-wider text-text-muted/60">
                         title
@@ -68,7 +68,7 @@ export default async function WritingPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="border-t border-border/40 pt-4">
+                  <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.4)] pt-4">
                     <p className="font-mono text-[0.78rem] font-bold text-text-muted">
                       {posts.length} {posts.length === 1 ? "post" : "posts"}
                     </p>

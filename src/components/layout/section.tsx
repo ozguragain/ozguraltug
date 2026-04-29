@@ -26,7 +26,7 @@ export function Section({
       className={cn(
         "relative",
         insetClasses[inset],
-        withDivider && "border-t border-border/80",
+        withDivider && "shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.8)]",
         className
       )}
       {...props}

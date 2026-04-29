@@ -45,7 +45,7 @@ export function MobileNav({ items }: MobileNavProps) {
             : "pointer-events-none grid-rows-[0fr] opacity-0"
         )}
       >
-        <div className="mt-3 overflow-hidden rounded-lg border border-border/70 bg-bg-elevated p-3">
+        <div className="mt-3 overflow-hidden rounded-lg shadow-[0_0_0_1px_hsl(var(--color-border)/0.7)] bg-bg-elevated p-3">
           <SiteNav
             items={items}
             orientation="vertical"

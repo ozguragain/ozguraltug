@@ -53,7 +53,7 @@ export default async function PostPage({ params }: PageProps) {
               <div className="flex items-center gap-2">
                 <Link
                   href="/writing"
-                  className="pressable font-mono text-[0.82rem] font-bold text-text-muted transition-colors duration-200 ease-out hover:text-text"
+                  className="pressable font-mono text-[0.82rem] font-bold text-text-muted transition-[color,transform] duration-200 ease-out hover:text-text"
                 >
                   ← back
                 </Link>
@@ -74,7 +74,7 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="border-t border-border/60 pt-8">
+            <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.6)] pt-8">
               <article className="prose-content">{mdxContent}</article>
             </div>
           </div>

@@ -22,7 +22,7 @@ const config: Config = {
         lg: "var(--radius-lg)"
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "monospace"]
+        mono: ["IBM Plex Mono", "Cascadia Mono", "Consolas", "Segoe UI Mono", "monospace"]
       },
       maxWidth: {
         shell: "var(--max-width-shell)",

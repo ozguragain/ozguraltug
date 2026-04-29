@@ -15,7 +15,7 @@ export function ExperienceList({ items }: ExperienceListProps) {
             </h3>
             <span
               aria-hidden="true"
-              className="hidden flex-1 border-b border-dotted border-text-muted/60 md:block"
+              className="hidden flex-1 shadow-[inset_0_-1px_0_0_hsl(var(--color-text-muted)/0.6)] md:block"
             />
             <p className="shrink-0 font-mono text-[0.82rem] text-text-muted sm:text-[0.9rem]">
               {item.period}

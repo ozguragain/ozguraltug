@@ -46,7 +46,7 @@ export function SiteHeader() {
         <div className="flex min-h-[var(--header-height)] items-center justify-between gap-4 md:hidden">
           <Link
             href="/"
-            className="rounded-sm py-2 font-mono text-base lowercase text-text"
+            className="rounded-sm py-2 font-mono text-base font-medium lowercase text-text"
           >
             about
           </Link>

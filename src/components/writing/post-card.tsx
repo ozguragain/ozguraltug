@@ -23,7 +23,7 @@ export function PostCard({ post, showEditLink }: PostCardProps) {
       <div className="flex items-baseline justify-between gap-4 py-2.5">
         <Link
           href={`/writing/${slug}`}
-          className="pressable flex-1 transition-opacity duration-200 ease-out hover:opacity-70"
+          className="pressable flex-1 transition-[color,transform] duration-250 ease-out hover:text-text"
         >
           <span className="font-mono text-[0.92rem] font-semibold tracking-[-0.02em] text-text/80 sm:text-[0.96rem]">
             {frontmatter.title}
@@ -35,7 +35,7 @@ export function PostCard({ post, showEditLink }: PostCardProps) {
         {showEditLink && (
           <Link
             href={`/writing/edit/${slug}`}
-            className="pressable shrink-0 rounded border border-border/60 px-2 py-1 font-mono text-[0.72rem] font-semibold text-text-muted transition-colors duration-200 ease-out hover:border-text-muted hover:text-text"
+            className="pressable shrink-0 rounded shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] px-2 py-1 font-mono text-[0.72rem] font-semibold text-text-muted transition-colors duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
           >
             edit
           </Link>

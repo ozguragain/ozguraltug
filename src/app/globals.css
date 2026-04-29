@@ -70,10 +70,13 @@
 
   body {
     @apply min-h-screen bg-bg text-text antialiased;
-    font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+    font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", "Cascadia Mono", "Consolas", "Segoe UI Mono", monospace;
     font-feature-settings: "liga" 1, "calt" 1;
     font-kerning: normal;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    font-synthesis: none;
   }
 
   ::selection {
@@ -129,7 +132,7 @@
   }
 
   .surface-shell {
-    @apply rounded-xl border border-border bg-bg-elevated;
+    @apply rounded-xl shadow-[0_0_0_1px_hsl(var(--color-border))] bg-bg-elevated;
   }
 
   .portrait-shell {
@@ -192,8 +195,14 @@
     transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    .pressable:hover {
+      transform: scale(1.03);
+    }
+  }
+
   .pressable:active {
-    transform: scale(0.97);
+    transform: scale(0.96);
   }
 
   .ascii-overlay {
@@ -263,7 +272,7 @@
   }
 
   .prose-content pre {
-    @apply my-6 rounded-lg border border-border bg-bg-elevated p-5 font-mono text-[0.88rem] leading-relaxed;
+    @apply my-6 rounded-lg shadow-[0_0_0_1px_hsl(var(--color-border))] bg-bg-elevated p-5 font-mono text-[0.88rem] leading-relaxed;
   }
 
   .prose-content code:not(pre code) {
@@ -280,7 +289,7 @@
   }
 
   .prose-content blockquote {
-    @apply my-5 border-l-2 border-border/60 pl-4 italic text-text-muted;
+    @apply my-5 shadow-[inset_2px_0_0_0_hsl(var(--color-border)/0.6)] pl-4 italic text-text-muted;
   }
 
   .prose-content a {
@@ -288,7 +297,7 @@
   }
 
   .prose-content hr {
-    @apply my-8 border-border/60;
+    @apply my-8 shadow-[0_1px_0_0_hsl(var(--color-border)/0.6)];
   }
 
   .prose-content strong {
@@ -311,7 +320,7 @@
       background: hsl(var(--color-bg) / var(--header-bg-opacity, 0.72));
       -webkit-backdrop-filter: saturate(180%) blur(var(--header-blur, 20px));
       backdrop-filter: saturate(180%) blur(var(--header-blur, 20px));
-      border-bottom: 1px solid hsl(var(--color-border) / 0.08);
+      box-shadow: inset 0 -1px 0 0 hsl(var(--color-border) / 0.08);
       transition: background 200ms ease-out, -webkit-backdrop-filter 200ms ease-out,
         backdrop-filter 200ms ease-out;
     }

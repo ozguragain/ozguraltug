@@ -22,7 +22,7 @@ export function SectionHeading({
   return (
     <header
       className={cn(
-        "flex flex-col gap-5 border-b border-border/70 pb-6 sm:pb-7",
+        "flex flex-col gap-5 shadow-[inset_0_-1px_0_0_hsl(var(--color-border)/0.7)] pb-6 sm:pb-7",
         align === "between" && "lg:flex-row lg:items-end lg:justify-between",
         className
       )}
