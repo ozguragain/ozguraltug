@@ -15,7 +15,7 @@ type SiteNavProps = {
 export function SiteNav({
   items,
   orientation = "horizontal",
-  onNavigateAction
+  onNavigateAction,
 }: SiteNavProps) {
   const pathname = usePathname();
 
@@ -26,7 +26,7 @@ export function SiteNav({
           "flex gap-1.5 sm:gap-2",
           orientation === "horizontal"
             ? "items-center"
-            : "flex-col items-start"
+            : "flex-col items-start",
         )}
       >
         {items.map((item) => {
@@ -42,10 +42,10 @@ export function SiteNav({
                 onClick={onNavigateAction}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "pressable inline-flex min-h-9 items-center rounded-md px-2 py-1.5 font-mono text-[0.85rem] font-medium lowercase tracking-normal transition-[color,background-color,transform] duration-160 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-2.5",
+                  "pressable inline-flex min-h-10 items-center rounded-md px-2.5 py-2 font-mono text-[0.85rem] font-medium lowercase tracking-normal transition-[color,background-color,transform,box-shadow] duration-160 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-3",
                   isActive
-                    ? "bg-text text-bg"
-                    : "text-text/92 hover:bg-text/[0.06] hover:text-text"
+                    ? "bg-black/[0.10] dark:bg-white/[0.14] text-text shadow-[inset_0_0_0_1px_hsl(var(--color-border)/0.35)]"
+                    : "text-text/85 text-gray-700 dark:text-gray-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.04] hover:text-text",
                 )}
               >
                 {item.label}

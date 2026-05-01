@@ -32,7 +32,7 @@ export function MobileNav({ items }: MobileNavProps) {
         aria-expanded={open}
         aria-controls="mobile-navigation"
         onClick={() => setOpen((value) => !value)}
-        className="pressable inline-flex min-h-11 items-center rounded-md px-3 py-2 font-mono text-sm lowercase text-text transition-colors duration-200 ease-out hover:text-text-muted"
+        className="pressable inline-flex min-h-10 items-center rounded-lg px-3 py-2 font-mono text-sm lowercase text-text/85 text-gray-700 dark:text-gray-400 transition-[color,background-color,transform] duration-200 ease-out hover:bg-black/[0.03] dark:hover:bg-white/[0.04] hover:text-text"
       >
         Menu
       </button>
@@ -45,7 +45,7 @@ export function MobileNav({ items }: MobileNavProps) {
             : "pointer-events-none grid-rows-[0fr] opacity-0"
         )}
       >
-        <div className="mt-3 overflow-hidden rounded-lg shadow-[0_0_0_1px_hsl(var(--color-border)/0.7)] bg-bg-elevated p-3">
+        <div className="mt-3 overflow-hidden rounded-xl bg-bg/60 p-3 shadow-[0_8px_32px_-12px_hsl(0_0%_0%_/_0.4),inset_0_0_0_1px_hsl(var(--color-border)/0.15)] backdrop-blur-2xl">
           <SiteNav
             items={items}
             orientation="vertical"

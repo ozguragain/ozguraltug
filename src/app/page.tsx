@@ -20,15 +20,15 @@ export default function HomePage() {
                     {profile.name}
                   </h1>
                   <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-mono text-[0.92rem] font-medium tracking-[-0.02em] text-text-prose sm:text-[0.98rem]">
+                    <p className="font-mono text-[0.92rem] font-medium tracking-[-0.02em] text-text-prose sm:text-[0.98rem] text-gray-700 dark:text-gray-400">
                       {profile.role}
                     </p>
-                    <span className="rounded-sm bg-bg-muted px-2 py-1 font-mono text-[0.8rem] font-medium tracking-[-0.02em] text-text/80 sm:text-[0.84rem]">
+                    <span className="rounded-sm bg-bg-muted px-2 py-1 font-mono text-[0.8rem] font-medium tracking-[-0.02em] text-text/80 sm:text-[0.84rem] text-gray-700 dark:text-gray-400">
                       {profile.pronouns}
                     </span>
                   </div>
                 </div>
-                <div className="max-w-[29rem] space-y-2.5 font-mono text-[0.92rem] font-medium leading-[1.72] tracking-[-0.02em] text-text-prose sm:text-[0.97rem]">
+                <div className="max-w-[29rem] space-y-2.5 font-mono text-[0.92rem] font-medium leading-[1.72] tracking-[-0.02em] text-text-prose sm:text-[0.97rem] text-gray-700 dark:text-gray-400">
                   <p>{profile.summary}</p>
                   <p>{profile.detail}</p>
                 </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noreferrer" : undefined}
-                        className="pressable font-mono text-[0.82rem] tracking-[-0.02em] text-text transition-[color,transform] duration-200 ease-out hover:text-text-muted"
+                        className="pressable font-mono text-[0.82rem] tracking-[-0.02em] text-text text-gray-700 dark:text-gray-400 transition-[color,transform] duration-200 ease-out hover:text-text-muted"
                       >
                         {item.label}
                       </Link>
@@ -81,11 +81,11 @@ export default function HomePage() {
                   aria-hidden="true"
                   className="hidden flex-1 shadow-[inset_0_-1px_0_0_hsl(var(--color-text-muted)/0.6)] md:block"
                 />
-                <p className="shrink-0 font-mono text-[0.82rem] text-text-muted sm:text-[0.9rem]">
+                <p className="shrink-0 font-mono text-[0.82rem] text-text-muted sm:text-[0.9rem] text-gray-700 dark:text-gray-400">
                   {profile.education.period}
                 </p>
               </div>
-              <p className="max-w-3xl text-[0.94rem] font-medium leading-8 text-text-prose sm:text-[0.98rem]">
+              <p className="max-w-3xl text-[0.94rem] font-medium leading-8 text-text-prose sm:text-[0.98rem] text-gray-700 dark:text-gray-400">
                 {profile.education.degree}
               </p>
             </article>

@@ -53,21 +53,21 @@ export default async function PostPage({ params }: PageProps) {
               <div className="flex items-center gap-2">
                 <Link
                   href="/writing"
-                  className="pressable font-mono text-[0.82rem] font-bold text-text-muted transition-[color,transform] duration-200 ease-out hover:text-text"
+                  className="pressable font-mono text-[0.82rem] font-bold text-text-muted text-gray-700 dark:text-gray-400 transition-[color,transform] duration-200 ease-out hover:text-text"
                 >
                   ← back
                 </Link>
-                <span className="font-mono text-[0.72rem] text-text-muted/40">
+                <span className="font-mono text-[0.72rem] text-text-muted/40 text-gray-700 dark:text-gray-400">
                   |
                 </span>
-                <span className="font-mono text-[0.82rem] font-bold text-text-muted">
+                <span className="font-mono text-[0.82rem] font-bold text-text-muted text-gray-700 dark:text-gray-400">
                   oz@writing:~$
                 </span>
               </div>
 
               <h1 className="type-display">{frontmatter.title}</h1>
 
-              <div className="flex items-center gap-3 font-mono text-[0.82rem] text-text-muted">
+              <div className="flex items-center gap-3 font-mono text-[0.82rem] text-text-muted text-gray-700 dark:text-gray-400">
                 <time dateTime={frontmatter.date}>
                   {formatDate(frontmatter.date)}
                 </time>
@@ -75,7 +75,7 @@ export default async function PostPage({ params }: PageProps) {
             </div>
 
             <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.6)] pt-8">
-              <article className="prose-content">{mdxContent}</article>
+              <article className="prose-content text-gray-700 dark:text-gray-400">{mdxContent}</article>
             </div>
           </div>
         </div>

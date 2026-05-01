@@ -28,14 +28,14 @@ export function PostCard({ post, showEditLink }: PostCardProps) {
           <span className="font-mono text-[0.92rem] font-semibold tracking-[-0.02em] text-text/80 sm:text-[0.96rem]">
             {frontmatter.title}
           </span>
-          <span className="ml-3 shrink-0 font-mono text-[0.78rem] text-text-muted sm:text-[0.82rem]">
+          <span className="ml-3 shrink-0 font-mono text-[0.78rem] text-text-muted sm:text-[0.82rem] text-gray-700 dark:text-gray-400">
             {formatDate(frontmatter.date)}
           </span>
         </Link>
         {showEditLink && (
           <Link
             href={`/writing/edit/${slug}`}
-            className="pressable shrink-0 rounded shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] px-2 py-1 font-mono text-[0.72rem] font-semibold text-text-muted transition-colors duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
+            className="pressable shrink-0 rounded shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] px-2 py-1 font-mono text-[0.72rem] font-semibold text-text-muted text-gray-700 dark:text-gray-400 transition-colors duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
           >
             edit
           </Link>

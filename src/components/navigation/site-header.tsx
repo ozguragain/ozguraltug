@@ -20,8 +20,8 @@ export function SiteHeader() {
     const onScroll = () => {
       const scrollY = window.scrollY;
       const progress = Math.min(scrollY / 80, 1);
-      const bgOpacity = 0.72 + progress * 0.16;
-      const blur = 20 + progress * 8;
+      const bgOpacity = 0.38 + progress * 0.22;
+      const blur = 28 + progress * 20;
       header.style.setProperty("--header-bg-opacity", String(bgOpacity));
       header.style.setProperty("--header-blur", `${blur}px`);
     };
@@ -46,7 +46,7 @@ export function SiteHeader() {
         <div className="flex min-h-[var(--header-height)] items-center justify-between gap-4 md:hidden">
           <Link
             href="/"
-            className="rounded-sm py-2 font-mono text-base font-medium lowercase text-text"
+            className="pressable rounded-lg px-2.5 py-2 font-mono text-base font-medium lowercase text-text/85 text-gray-700 dark:text-gray-400 transition-[color,background-color,transform] duration-160 ease-out hover:bg-black/[0.03] dark:hover:bg-white/[0.04] hover:text-text"
           >
             about
           </Link>

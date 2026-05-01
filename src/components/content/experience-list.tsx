@@ -17,11 +17,11 @@ export function ExperienceList({ items }: ExperienceListProps) {
               aria-hidden="true"
               className="hidden flex-1 shadow-[inset_0_-1px_0_0_hsl(var(--color-text-muted)/0.6)] md:block"
             />
-            <p className="shrink-0 font-mono text-[0.82rem] text-text-muted sm:text-[0.9rem]">
+            <p className="shrink-0 font-mono text-[0.82rem] text-text-muted sm:text-[0.9rem] text-gray-700 dark:text-gray-400">
               {item.period}
             </p>
           </div>
-          <p className="max-w-3xl text-[0.94rem] font-medium leading-8 text-text-prose sm:text-[0.98rem]">
+          <p className="max-w-3xl text-[0.94rem] font-medium leading-8 text-text-prose sm:text-[0.98rem] text-gray-700 dark:text-gray-400">
             {item.role}
           </p>
         </article>
