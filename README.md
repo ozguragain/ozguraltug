@@ -1,6 +1,6 @@
 # ozguraltug.dev
 
-This repository contains the source code for my personal website, portfolio, and blog. Live version: [ozguraltug.com](https://ozguraltug.com)
+This repository contains the source code for my personal website, portfolio, and blog. Live version: [ozguraltug.dev](https://ozguraltug.dev)
 
 ## Tech Stack
 
