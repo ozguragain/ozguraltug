@@ -32,7 +32,7 @@ export function MobileNav({ items }: MobileNavProps) {
         aria-expanded={open}
         aria-controls="mobile-navigation"
         onClick={() => setOpen((value) => !value)}
-        className="pressable inline-flex min-h-10 items-center rounded-lg px-3 py-2 font-mono text-sm lowercase text-text/85 text-gray-700 dark:text-gray-400 transition-[color,background-color,transform] duration-200 ease-out hover:bg-black/[0.03] dark:hover:bg-white/[0.04] hover:text-text"
+        className="inline-flex min-h-10 items-center rounded-full px-3.5 text-[0.95rem] font-medium text-text-muted transition-colors duration-200 ease-out hover:bg-bg-muted/50 hover:text-text"
       >
         Menu
       </button>

@@ -19,20 +19,17 @@ export default async function WritingPage() {
   return (
     <Section inset="lg">
       <Container size="content">
-        <div className="mx-auto w-full max-w-[var(--max-width-frame)]">
-          <div className="enter-rise space-y-8">
+        <div className="mx-auto w-full max-w-[var(--max-width-prose)]">
+          <div className="space-y-8">
             <div className="space-y-2">
-              <p className="font-mono text-[0.82rem] font-bold text-text-muted text-gray-700 dark:text-gray-400">
-                oz@writing:~$
-              </p>
               <h1 className="type-display">Writing</h1>
-              <p className="font-mono text-[0.92rem] font-bold text-text-muted sm:text-[0.96rem] text-gray-700 dark:text-gray-400">
+              <p className=" text-[0.92rem] text-text-muted sm:text-[0.96rem]">
                 Technical notes on software engineering and beyond.
               </p>
               {isAuthenticated && (
                 <Link
                   href="/writing/new"
-                  className="pressable inline-block rounded shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] px-3 py-1.5 font-mono text-[0.78rem] font-bold text-text-muted text-gray-700 dark:text-gray-400 transition-[color,box-shadow,transform] duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
+                  className="inline-block rounded px-3 py-1.5 text-[0.78rem] font-semibold text-text-muted shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] transition-[color,box-shadow] duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
                 >
                   + new post
                 </Link>
@@ -42,10 +39,10 @@ export default async function WritingPage() {
             <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.6)] pt-6">
               {posts.length === 0 ? (
                 <div className="space-y-2 py-8">
-                  <p className="font-mono text-[0.88rem] font-bold text-text-muted text-gray-700 dark:text-gray-400">
+                  <p className=" text-[0.88rem] text-text-muted">
                     no posts found
                   </p>
-                  <p className="font-mono text-[0.82rem] font-bold text-text-muted/60 text-gray-700 dark:text-gray-400">
+                  <p className=" text-[0.82rem] text-text-muted/60">
                     check back later
                   </p>
                 </div>
@@ -53,23 +50,23 @@ export default async function WritingPage() {
                 <>
                   <div className="shadow-[inset_0_-1px_0_0_hsl(var(--color-border)/0.4)] pb-3">
                     <div className="flex items-baseline justify-between gap-4">
-                      <span className="font-mono text-[0.72rem] uppercase tracking-wider text-text-muted/60 text-gray-700 dark:text-gray-400">
+                      <span className=" text-[0.72rem] uppercase tracking-wider text-text-muted/60">
                         title
                       </span>
-                      <span className="shrink-0 font-mono text-[0.72rem] uppercase tracking-wider text-text-muted/60 text-gray-700 dark:text-gray-400">
+                      <span className="shrink-0 text-[0.72rem] uppercase tracking-wider text-text-muted/60">
                         date
                       </span>
                     </div>
                   </div>
                   <div className="py-2">
                     {posts.map((post) => (
-                      <div key={post.slug} className="stagger-item">
+                      <div key={post.slug}>
                         <PostCard post={post} showEditLink={isAuthenticated} />
                       </div>
                     ))}
                   </div>
                   <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.4)] pt-4">
-                    <p className="font-mono text-[0.78rem] font-bold text-text-muted text-gray-700 dark:text-gray-400">
+                    <p className=" text-[0.78rem] text-text-muted">
                       {posts.length} {posts.length === 1 ? "post" : "posts"}
                     </p>
                   </div>

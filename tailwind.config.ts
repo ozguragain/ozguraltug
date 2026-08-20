@@ -11,10 +11,12 @@ const config: Config = {
         "bg-muted": "hsl(var(--color-bg-muted) / <alpha-value>)",
         border: "hsl(var(--color-border) / <alpha-value>)",
         text: "hsl(var(--color-text) / <alpha-value>)",
+        "text-soft": "hsl(var(--color-text-soft) / <alpha-value>)",
         "text-muted": "hsl(var(--color-text-muted) / <alpha-value>)",
         accent: "hsl(var(--color-accent) / <alpha-value>)",
         "accent-strong": "hsl(var(--color-accent-strong) / <alpha-value>)",
-        ring: "hsl(var(--color-ring) / <alpha-value>)"
+        ring: "hsl(var(--color-ring) / <alpha-value>)",
+        link: "hsl(var(--color-link) / <alpha-value>)"
       },
       borderRadius: {
         sm: "var(--radius-sm)",
@@ -22,7 +24,14 @@ const config: Config = {
         lg: "var(--radius-lg)"
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "Cascadia Mono", "Consolas", "Segoe UI Mono", "monospace"]
+        mono: ["var(--font-mono)", "Cascadia Mono", "Consolas", "Segoe UI Mono", "monospace"],
+        sans: [
+          "var(--font-sans)",
+          "Gabarito",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif"
+        ]
       },
       maxWidth: {
         shell: "var(--max-width-shell)",

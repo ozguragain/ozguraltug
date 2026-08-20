@@ -28,27 +28,13 @@ export async function compileMdxContent(
 }
 
 export const mdxComponents = {
-  h1: ({ children }: { children: React.ReactNode }) => (
-    <h1 className="mb-6 mt-10">{children}</h1>
-  ),
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <h2>{children}</h2>
-  ),
-  h3: ({ children }: { children: React.ReactNode }) => (
-    <h3>{children}</h3>
-  ),
-  p: ({ children }: { children: React.ReactNode }) => (
-    <p className="whitespace-pre-wrap">{children}</p>
-  ),
-  ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="list-inside list-disc">{children}</ul>
-  ),
-  ol: ({ children }: { children: React.ReactNode }) => (
-    <ol className="list-inside list-decimal">{children}</ol>
-  ),
-  li: ({ children }: { children: React.ReactNode }) => (
-    <li>{children}</li>
-  ),
+  h1: ({ children }: { children: React.ReactNode }) => <h1>{children}</h1>,
+  h2: ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>,
+  h3: ({ children }: { children: React.ReactNode }) => <h3>{children}</h3>,
+  p: ({ children }: { children: React.ReactNode }) => <p>{children}</p>,
+  ul: ({ children }: { children: React.ReactNode }) => <ul>{children}</ul>,
+  ol: ({ children }: { children: React.ReactNode }) => <ol>{children}</ol>,
+  li: ({ children }: { children: React.ReactNode }) => <li>{children}</li>,
   blockquote: ({ children }: { children: React.ReactNode }) => (
     <blockquote>{children}</blockquote>
   ),

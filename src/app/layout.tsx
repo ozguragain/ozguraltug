@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { IBM_Plex_Mono } from "next/font/google";
+import { DM_Mono, Gabarito } from "next/font/google";
 
 import { SiteShell } from "@/components/layout/site-shell";
 import { themeScript } from "@/lib/theme";
 
 import "./globals.css";
 
-const ibmPlexMono = IBM_Plex_Mono({
+const gabarito = Gabarito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
+  display: "swap"
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap"
 });
 
@@ -30,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
-      <body className={ibmPlexMono.variable}>
+      <body className={`${gabarito.variable} ${dmMono.variable}`}>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <SiteShell>{children}</SiteShell>
       </body>
