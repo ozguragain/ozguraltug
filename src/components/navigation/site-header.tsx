@@ -22,7 +22,7 @@ function HomeLink({ active }: { active: boolean }) {
         active ? "text-text" : "text-text-muted hover:text-text",
       )}
     >
-      home
+      Home
     </Link>
   );
 }
@@ -32,7 +32,7 @@ export function SiteHeader() {
   const homeActive = pathname === "/";
 
   return (
-    <header className="sticky top-0 z-50 site-header">
+    <header className="relative z-40 w-full py-2">
       <Container size="content">
         <div className="hidden min-h-[var(--header-height)] items-center md:flex">
           <div className="mx-auto flex w-full max-w-[var(--max-width-prose)] items-center justify-between gap-6">
