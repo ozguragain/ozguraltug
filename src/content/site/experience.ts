@@ -6,13 +6,13 @@ export type ExperienceItem = {
 
 export const experienceItems: ExperienceItem[] = [
   {
-    organization: "Fiba Holding",
-    role: "Information Technology Intern",
+    organization: "GlassHouse",
+    role: "International Backup Operations Intern",
     period: "Ongoing"
   },
   {
-    organization: "Course Projects",
-    role: "AI Agents and Computer Vision Projects",
+    organization: "Fiba Holding",
+    role: "Information Technology Intern",
     period: "2026"
   }
 ];

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { deserialize } from "v8";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,6 +11,13 @@ export const metadata: Metadata = {
 };
 
 const projects = [
+  {
+    title: "mdp",
+    description:
+      "A minimal, fast, and extensible Markdown parser written in Go.",
+    href: "https://github.com/ozguragain/mdp",
+    external: true,
+  },
   {
     title: "personal-site",
     description:

@@ -1,7 +1,6 @@
 export const profile = {
   name: "Ozgur Altug",
   role: "Computer Science Student",
-  pronouns: "he/him",
   summary:
     "Building software across the web, systems, and developer tooling with a strong bias toward clarity, speed, and maintainable design.",
   detail:
@@ -24,7 +23,7 @@ export const profile = {
     },
     {
       label: "Email",
-      href: "mailto:ozgraltg@gmail.com",
+      href: "mailto:reach@ozguraltug.dev",
       external: true
     }
   ]
