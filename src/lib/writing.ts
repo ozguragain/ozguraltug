@@ -20,20 +20,33 @@ export type PostWithContent = Post & {
   content: string;
 };
 
-function getPostSlugs(): string[] {
+function getPostFileNames(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) {
     return [];
   }
   return fs
     .readdirSync(CONTENT_DIR)
-    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
 }
 
-function parsePost(slug: string): PostWithContent {
-  const fullPath = path.join(CONTENT_DIR, `${slug}.mdx`);
+function resolveFilePath(slug: string): string | null {
+  const md = path.join(CONTENT_DIR, `${slug}.md`);
+  const mdx = path.join(CONTENT_DIR, `${slug}.mdx`);
+  if (fs.existsSync(md)) return md;
+  if (fs.existsSync(mdx)) return mdx;
+  return null;
+}
+
+function toTimestamp(dateString: string): number {
+  const t = Date.parse(dateString);
+  return Number.isNaN(t) ? 0 : t;
+}
+
+function parsePost(slug: string): PostWithContent | null {
+  const fullPath = resolveFilePath(slug);
+  if (!fullPath) return null;
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-
   return {
     slug,
     frontmatter: data as PostFrontmatter,
@@ -42,24 +55,19 @@ function parsePost(slug: string): PostWithContent {
 }
 
 export function getSortedPosts(): Post[] {
-  const slugs = getPostSlugs();
-  const posts = slugs.map((fileName) => {
+  const fileNames = getPostFileNames();
+  const posts: Post[] = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.mdx?$/, "");
     const fullPath = path.join(CONTENT_DIR, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data } = matter(fileContents);
-
     return {
       slug,
       frontmatter: data as PostFrontmatter,
     };
   });
 
-  return posts.sort((a, b) => {
-    const dateA = new Date(a.frontmatter.date);
-    const dateB = new Date(b.frontmatter.date);
-    return dateB.getTime() - dateA.getTime();
-  });
+  return posts.sort((a, b) => toTimestamp(b.frontmatter.date) - toTimestamp(a.frontmatter.date));
 }
 
 export function getPostBySlug(slug: string): PostWithContent | null {
@@ -71,5 +79,5 @@ export function getPostBySlug(slug: string): PostWithContent | null {
 }
 
 export function getAllSlugs(): string[] {
-  return getPostSlugs().map((slug) => slug.replace(/\.mdx?$/, ""));
+  return getPostFileNames().map((name) => name.replace(/\.mdx?$/, ""));
 }

@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { compileMdxContent, mdxComponents } from "@/components/writing/mdx-components";
-import { getPostBySlug, getAllSlugs } from "@/lib/writing";
+import { getAllSlugs, getPostBySlug } from "@/lib/writing";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export function generateStaticParams() {
+  return getAllSlugs().map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -25,8 +29,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
+  const d = new Date(dateString);
+  if (Number.isNaN(d.getTime())) return dateString;
+  return d.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -62,9 +67,7 @@ export default async function PostPage({ params }: PageProps) {
               <h1 className="type-display">{frontmatter.title}</h1>
 
               <div className="flex items-center gap-3 text-[0.82rem] text-text-muted">
-                <time dateTime={frontmatter.date}>
-                  {formatDate(frontmatter.date)}
-                </time>
+                <time dateTime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
               </div>
             </div>
 

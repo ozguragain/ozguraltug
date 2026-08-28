@@ -15,14 +15,9 @@ export default function HomePage() {
             <div className="enter-rise space-y-8">
               <div className="space-y-4">
                 <h1 className="type-display">{profile.name}</h1>
-                <div className="flex flex-wrap items-center gap-3">
-                  <p className="text-[0.98rem] font-medium leading-[1.6] text-text-soft sm:text-[1.04rem]">
-                    {profile.role}
-                  </p>
-                  <span className="rounded-full bg-bg-muted px-2.5 py-1 text-[0.84rem] font-medium text-text-soft sm:text-[0.88rem]">
-                    {profile.pronouns}
-                  </span>
-                </div>
+                <p className="text-[0.98rem] font-medium leading-[1.6] text-text-soft sm:text-[1.04rem]">
+                  {profile.role}
+                </p>
               </div>
               <div className="space-y-3 text-[1rem] font-medium leading-[1.8] text-text-soft sm:text-[1.06rem]">
                 <p>{profile.summary}</p>

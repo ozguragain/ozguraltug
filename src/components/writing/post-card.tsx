@@ -1,21 +1,17 @@
 import Link from "next/link";
 import type { Post } from "@/lib/writing";
 
-type PostCardProps = {
-  post: Post;
-  showEditLink?: boolean;
-};
-
 function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
+  const d = new Date(dateString);
+  if (Number.isNaN(d.getTime())) return dateString;
+  return d.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
   });
 }
 
-export function PostCard({ post, showEditLink }: PostCardProps) {
+export function PostCard({ post }: { post: Post }) {
   const { slug, frontmatter } = post;
 
   return (
@@ -32,14 +28,6 @@ export function PostCard({ post, showEditLink }: PostCardProps) {
             {formatDate(frontmatter.date)}
           </span>
         </Link>
-        {showEditLink && (
-          <Link
-            href={`/writing/edit/${slug}`}
-            className="shrink-0 rounded px-2 py-1 text-[0.72rem] font-semibold text-text-muted shadow-[0_0_0_1px_hsl(var(--color-border)/0.6)] transition-colors duration-200 ease-out hover:shadow-[0_0_0_1px_hsl(var(--color-text-muted))] hover:text-text"
-          >
-            edit
-          </Link>
-        )}
       </div>
     </article>
   );
