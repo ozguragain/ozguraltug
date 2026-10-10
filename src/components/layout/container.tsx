@@ -11,10 +11,12 @@ type ContainerProps<T extends ElementType> = {
   bleedOnMobile?: boolean;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "children">;
 
+// Read straight from the CSS variables: the max-w-* token names collide with
+// Tailwind's own scale (prose) and with --spacing-shell, which silently wins.
 const sizeClasses: Record<ContainerSize, string> = {
-  shell: "max-w-shell",
-  content: "max-w-content",
-  prose: "max-w-prose"
+  shell: "max-w-[var(--max-width-shell)]",
+  content: "max-w-[var(--max-width-content)]",
+  prose: "max-w-[var(--max-width-prose)]"
 };
 
 export function Container<T extends ElementType = "div">({

@@ -33,12 +33,6 @@ const config: Config = {
           "sans-serif"
         ]
       },
-      maxWidth: {
-        shell: "var(--max-width-shell)",
-        content: "var(--max-width-content)",
-        prose: "var(--max-width-prose)",
-        frame: "var(--max-width-frame)"
-      },
       spacing: {
         shell: "var(--space-shell)"
       },
