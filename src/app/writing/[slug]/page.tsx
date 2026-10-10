@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { compileMdxContent, mdxComponents } from "@/components/writing/mdx-components";
+import { renderPost } from "@/lib/render";
 import { getAllSlugs, getPostBySlug } from "@/lib/writing";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
+import { formatDate } from "@/lib/format";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -28,16 +29,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function formatDate(dateString: string): string {
-  const d = new Date(dateString);
-  if (Number.isNaN(d.getTime())) return dateString;
-  return d.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
@@ -46,36 +37,34 @@ export default async function PostPage({ params }: PageProps) {
     notFound();
   }
 
-  const { content, frontmatter } = post;
-  const { content: mdxContent } = await compileMdxContent(content, frontmatter, mdxComponents as any);
+  const { markdown, frontmatter } = post;
+  const html = await renderPost(markdown);
 
   return (
     <Section inset="lg">
-      <Container size="content">
-        <div className="mx-auto w-full max-w-[var(--max-width-prose)]">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/writing"
-                  className="text-[0.82rem] font-medium text-text-muted transition-colors duration-200 ease-out hover:text-text"
-                >
-                  ← All writing
-                </Link>
-              </div>
-
-              <h1 className="type-display">{frontmatter.title}</h1>
-
-              <div className="flex items-center gap-3 text-[0.82rem] text-text-muted">
-                <time dateTime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
-              </div>
+      <Container size="prose">
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Link
+                href="/writing"
+                className="inline-flex min-h-11 items-center text-[0.82rem] font-medium text-text-muted transition-colors duration-fast ease-out hover:text-text"
+              >
+                ← All writing
+              </Link>
             </div>
 
-            <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.6)] pt-8">
-              <article className="prose-content">{mdxContent}</article>
+            <h1 className="type-display">{frontmatter.title}</h1>
+
+            <div className="flex items-center gap-3 font-mono text-[0.82rem] tabular-nums text-text-muted">
+              <time dateTime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
             </div>
           </div>
-        </div>
+
+            <div className="border-t border-border/10 pt-8">
+              <article className="prose-content" dangerouslySetInnerHTML={{ __html: html }} />
+            </div>
+          </div>
       </Container>
     </Section>
   );

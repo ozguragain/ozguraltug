@@ -23,7 +23,7 @@ export function SiteNav({
     <nav aria-label="Primary">
       <ul
         className={cn(
-          "flex gap-3 sm:gap-5",
+          "flex gap-4 sm:gap-6",
           orientation === "horizontal"
             ? "items-center"
             : "flex-col items-start",
@@ -43,8 +43,10 @@ export function SiteNav({
                 aria-current={isActive ? "page" : undefined}
                 data-active={isActive ? "true" : undefined}
                 className={cn(
-                  "nav-underline relative inline-flex min-h-10 items-center text-[0.95rem] font-medium transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  isActive ? "text-text" : "text-text-muted hover:text-text",
+                  "relative inline-flex min-h-11 items-center text-[0.95rem] font-[450] transition-[color,transform] duration-fast ease-out hover:will-change-transform active:scale-[0.96] active:duration-instant active:will-change-transform focus-visible:outline-none after:pointer-events-none after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-full after:origin-left after:transition-transform after:duration-base after:ease-out-strong after:content-['']",
+                  isActive
+                    ? "text-text after:scale-x-100 after:bg-text/60"
+                    : "text-text-soft hover:text-text after:scale-x-0 after:bg-text/60",
                 )}
               >
                 {item.label}

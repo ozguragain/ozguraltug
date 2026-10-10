@@ -52,12 +52,28 @@ export function ThemeToggle() {
       type="button"
       onClick={handleToggle}
       aria-label={`Switch to ${nextTheme} theme`}
-      className="pressable inline-flex h-10 w-10 items-center justify-center rounded-full text-text transition-[color,transform] duration-200 ease-out hover:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring relative"
+      className="pressable relative inline-flex h-11 w-11 items-center justify-center rounded-full text-text transition-[color,transform] duration-fast ease-out hover:text-text-muted active:scale-[0.97] active:duration-instant focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <span className="absolute inset-0 flex items-center justify-center transition-[opacity,transform,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)]" style={{ opacity: theme === THEMES.dark ? 1 : 0, transform: theme === THEMES.dark ? 'scale(1)' : 'scale(0.25)', filter: theme === THEMES.dark ? 'blur(0px)' : 'blur(4px)' }}>
+      <span
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          opacity: theme === THEMES.dark ? 1 : 0,
+          transform: theme === THEMES.dark ? "scale(1)" : "scale(0.25)",
+          transition:
+            "transform 260ms var(--ease-spring), opacity 160ms var(--ease-out)",
+        }}
+      >
         <SunIcon />
       </span>
-      <span className="absolute inset-0 flex items-center justify-center transition-[opacity,transform,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)]" style={{ opacity: theme === THEMES.light ? 1 : 0, transform: theme === THEMES.light ? 'scale(1)' : 'scale(0.25)', filter: theme === THEMES.light ? 'blur(0px)' : 'blur(4px)' }}>
+      <span
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          opacity: theme === THEMES.light ? 1 : 0,
+          transform: theme === THEMES.light ? "scale(1)" : "scale(0.25)",
+          transition:
+            "transform 260ms var(--ease-spring), opacity 160ms var(--ease-out)",
+        }}
+      >
         <MoonIcon />
       </span>
     </button>
@@ -69,12 +85,12 @@ function SunIcon() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-[1.125rem] w-[1.125rem]"
+      className="h-4 w-4"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="1.8"
+      strokeWidth="1.25"
     >
       <circle cx="12" cy="12" r="4.25" />
       <path d="M12 2.75v2.5" />
@@ -94,12 +110,12 @@ function MoonIcon() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-[1.125rem] w-[1.125rem]"
+      className="h-4 w-4"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="1.8"
+      strokeWidth="1.25"
     >
       <path d="M20.19 14.84A8.5 8.5 0 1 1 9.16 3.81 7 7 0 0 0 20.19 14.84Z" />
     </svg>

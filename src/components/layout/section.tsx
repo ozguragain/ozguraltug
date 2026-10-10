@@ -24,9 +24,8 @@ export function Section({
   return (
     <section
       className={cn(
-        "relative",
         insetClasses[inset],
-        withDivider && "shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.8)]",
+        withDivider && "border-t border-border/40",
         className
       )}
       {...props}

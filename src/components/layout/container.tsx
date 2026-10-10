@@ -31,7 +31,7 @@ export function Container<T extends ElementType = "div">({
     <Component
       className={cn(
         "mx-auto w-full",
-        bleedOnMobile ? "px-0 sm:px-shell" : "px-4 sm:px-6 lg:px-shell",
+        bleedOnMobile ? "px-0 sm:px-shell" : "px-shell",
         sizeClasses[size],
         className
       )}

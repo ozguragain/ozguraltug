@@ -14,9 +14,8 @@ export default function WritingPage() {
 
   return (
     <Section inset="lg">
-      <Container size="content">
-        <div className="mx-auto w-full max-w-[var(--max-width-prose)]">
-          <div className="space-y-8">
+      <Container size="prose">
+        <div className="space-y-8">
             <div className="space-y-2">
               <h1 className="type-display">Writing</h1>
               <p className=" text-[0.92rem] text-text-muted sm:text-[0.96rem]">
@@ -24,7 +23,7 @@ export default function WritingPage() {
               </p>
             </div>
 
-            <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.6)] pt-6">
+            <div className="border-t border-border/10 pt-6">
               {posts.length === 0 ? (
                 <div className="space-y-2 py-8">
                   <p className=" text-[0.88rem] text-text-muted">no posts found</p>
@@ -32,7 +31,7 @@ export default function WritingPage() {
                 </div>
               ) : (
                 <>
-                  <div className="shadow-[inset_0_-1px_0_0_hsl(var(--color-border)/0.4)] pb-3">
+                  <div className="border-b border-border/10 pb-3">
                     <div className="flex items-baseline justify-between gap-4">
                       <span className=" text-[0.72rem] uppercase tracking-wider text-text-muted/60">
                         title
@@ -49,7 +48,7 @@ export default function WritingPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.4)] pt-4">
+                  <div className="border-t border-border/10 pt-4">
                     <p className=" text-[0.78rem] text-text-muted">
                       {posts.length} {posts.length === 1 ? "post" : "posts"}
                     </p>
@@ -58,7 +57,6 @@ export default function WritingPage() {
               )}
             </div>
           </div>
-        </div>
       </Container>
     </Section>
   );

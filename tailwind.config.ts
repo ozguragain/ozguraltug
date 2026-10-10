@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,md,mdx}"],
-  darkMode: ["class", '[data-theme="dark"]'],
+  darkMode: ["selector", '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
@@ -36,13 +36,32 @@ const config: Config = {
       maxWidth: {
         shell: "var(--max-width-shell)",
         content: "var(--max-width-content)",
-        prose: "var(--max-width-prose)"
+        prose: "var(--max-width-prose)",
+        frame: "var(--max-width-frame)"
       },
       spacing: {
         shell: "var(--space-shell)"
       },
       transitionTimingFunction: {
-        "ease-out-strong": "cubic-bezier(0.22, 1, 0.36, 1)"
+        out: "cubic-bezier(0.16, 1, 0.3, 1)",
+        "out-strong": "cubic-bezier(0.22, 1, 0.36, 1)",
+        spring: "cubic-bezier(0.32, 0.72, 0, 1)"
+      },
+      transitionDuration: {
+        instant: "100ms",
+        fast: "140ms",
+        base: "180ms",
+        medium: "240ms",
+        slow: "360ms"
+      },
+      keyframes: {
+        "rise-in": {
+          from: { opacity: "0", transform: "translate3d(0, 10px, 0)" },
+          to: { opacity: "1", transform: "translate3d(0, 0, 0)" }
+        }
+      },
+      animation: {
+        "rise-in": "rise-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both"
       }
     }
   },

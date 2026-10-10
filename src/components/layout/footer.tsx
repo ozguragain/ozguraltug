@@ -10,16 +10,14 @@ import { Container } from "./container";
 
 export function Footer() {
   const pathname = usePathname();
-  const isEditorRoute = pathname?.startsWith("/writing/");
-
-  if (isEditorRoute) {
-    return null;
-  }
+  const isWritingPost = pathname?.startsWith("/writing/") && pathname !== "/writing";
+  // P0: do not hide footer on post pages — keep visible for IA/a11y
+  void isWritingPost;
 
   return (
     <footer className="py-16 sm:py-20">
-      <Container size="content">
-        <div className="mx-auto w-full max-w-[var(--max-width-prose)] space-y-10 shadow-[inset_0_1px_0_0_hsl(var(--color-border)/0.7)] pt-10">
+      <Container size="prose">
+        <div className="w-full space-y-10 border-t border-border/10 pt-10">
           <div className="grid gap-10 sm:grid-cols-2">
             <nav aria-label="Footer">
               <ul className="space-y-5">
@@ -27,7 +25,7 @@ export function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className=" text-[1rem] text-text-muted transition-colors duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="inline-flex min-h-11 items-center rounded-sm text-[1rem] text-text-muted transition-[color,transform] duration-[140ms] ease-out active:scale-[0.96] hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </Link>
@@ -37,14 +35,14 @@ export function Footer() {
             </nav>
 
             <div className="sm:justify-self-end">
-              <ul className="space-y-5 sm:text-right">
+              <ul className="space-y-5 text-left sm:text-right">
                 {profile.links.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
                       target={item.external ? "_blank" : undefined}
-                      rel={item.external ? "noreferrer" : undefined}
-                      className=" text-[1rem] text-text-muted transition-colors duration-200 ease-out hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      rel={item.external ? "noreferrer noopener" : undefined}
+                      className="inline-flex min-h-11 items-center rounded-sm text-[1rem] text-text-muted transition-[color,transform] duration-[140ms] ease-out active:scale-[0.96] hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </Link>

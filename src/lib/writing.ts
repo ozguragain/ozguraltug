@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
+import { parseFrontmatter, readFrontmatter } from "mdp";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/writing");
 
@@ -17,24 +17,19 @@ export type Post = {
 };
 
 export type PostWithContent = Post & {
-  content: string;
+  markdown: string;
 };
 
 function getPostFileNames(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) {
     return [];
   }
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+  return fs.readdirSync(CONTENT_DIR).filter((file) => file.endsWith(".md"));
 }
 
 function resolveFilePath(slug: string): string | null {
-  const md = path.join(CONTENT_DIR, `${slug}.md`);
-  const mdx = path.join(CONTENT_DIR, `${slug}.mdx`);
-  if (fs.existsSync(md)) return md;
-  if (fs.existsSync(mdx)) return mdx;
-  return null;
+  const file = path.join(CONTENT_DIR, `${slug}.md`);
+  return fs.existsSync(file) ? file : null;
 }
 
 function toTimestamp(dateString: string): number {
@@ -42,29 +37,26 @@ function toTimestamp(dateString: string): number {
   return Number.isNaN(t) ? 0 : t;
 }
 
+function frontmatterOf(source: string): PostFrontmatter {
+  return parseFrontmatter(readFrontmatter(source)) as unknown as PostFrontmatter;
+}
+
 function parsePost(slug: string): PostWithContent | null {
   const fullPath = resolveFilePath(slug);
   if (!fullPath) return null;
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const source = fs.readFileSync(fullPath, "utf8");
   return {
     slug,
-    frontmatter: data as PostFrontmatter,
-    content,
+    frontmatter: frontmatterOf(source),
+    markdown: source,
   };
 }
 
 export function getSortedPosts(): Post[] {
-  const fileNames = getPostFileNames();
-  const posts: Post[] = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx?$/, "");
-    const fullPath = path.join(CONTENT_DIR, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data } = matter(fileContents);
-    return {
-      slug,
-      frontmatter: data as PostFrontmatter,
-    };
+  const posts: Post[] = getPostFileNames().map((fileName) => {
+    const slug = fileName.replace(/\.md$/, "");
+    const source = fs.readFileSync(path.join(CONTENT_DIR, fileName), "utf8");
+    return { slug, frontmatter: frontmatterOf(source) };
   });
 
   return posts.sort((a, b) => toTimestamp(b.frontmatter.date) - toTimestamp(a.frontmatter.date));
@@ -79,5 +71,5 @@ export function getPostBySlug(slug: string): PostWithContent | null {
 }
 
 export function getAllSlugs(): string[] {
-  return getPostFileNames().map((name) => name.replace(/\.mdx?$/, ""));
+  return getPostFileNames().map((name) => name.replace(/\.md$/, ""));
 }
