@@ -7,6 +7,7 @@ This repository contains the source code for my personal website, portfolio, and
 - Framework: Next.js
 - Deployment: Vercel
 - Styling: Tailwind CSS
+- Markdown: [@ozguragain/mdp](https://www.npmjs.com/package/@ozguragain/mdp), a Go markdown compiler
 
 ## Overview
 
@@ -24,3 +25,18 @@ This application requires Node version: 14.15.3 or higher.
 ```bash
 npm install
 npm run dev
+```
+
+## Updating mdp
+
+Markdown is compiled by [`@ozguragain/mdp`](https://www.npmjs.com/package/@ozguragain/mdp).
+Its releases are cut from the [mdp repository](https://github.com/ozguragain/mdp);
+upgrade here with:
+
+```bash
+npm i @ozguragain/mdp@latest
+```
+
+The package carries the compiler binaries for darwin-arm64 and linux-x64. On any
+other platform, build one in the mdp checkout (`scripts/build-binaries.sh`) and
+point `MDP_BIN` at it.

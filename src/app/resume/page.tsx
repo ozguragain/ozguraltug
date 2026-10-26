@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return (
     <Section inset="lg">
-      <Container size="content">
-        <div className="mx-auto w-full max-w-[var(--max-width-prose)] space-y-10">
+      <Container size="prose">
+        <div className="space-y-10">
           <header className="space-y-4">
             <h1 className="type-display">{profile.name}</h1>
             <p className="max-w-2xl text-[0.92rem] leading-7 text-text-soft sm:text-[0.98rem]">
@@ -29,8 +29,8 @@ export default function ResumePage() {
                   <Link
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
-                    className=" text-[0.82rem] text-text transition-colors duration-200 ease-out hover:text-text-muted"
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                    className="inline-flex min-h-11 items-center text-[0.82rem] text-text transition-colors duration-fast ease-out hover:text-text-muted"
                   >
                     {item.label}
                   </Link>
@@ -48,7 +48,7 @@ export default function ResumePage() {
                 </h3>
                 <span
                   aria-hidden="true"
-                  className="hidden flex-1 shadow-[inset_0_-1px_0_0_hsl(var(--color-text-muted)/0.6)] md:block"
+                  className="hidden flex-1 border-t border-dashed border-border/15 md:block"
                 />
                 <p className="shrink-0 text-[0.82rem] text-text-muted sm:text-[0.9rem]">
                   {profile.education.period}

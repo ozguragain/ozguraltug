@@ -10,23 +10,26 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
-    "next": "^16.2.3",
-    "next-mdx-remote": "^6.0.0",
+    "@ozguragain/mdp": "^0.1.0",
+    "hast-util-to-html": "^9.0.5",
+    "next": "^16.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "rehype-parse": "^9.0.1",
     "rehype-pretty-code": "^0.14.3",
-    "shiki": "^4.0.2"
+    "shiki": "^4.0.2",
+    "tailwind-merge": "^3.6.0",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.20",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^16.2.2",
+    "eslint-config-next": "^16.4.3",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.16",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.7.0"
   }
 }

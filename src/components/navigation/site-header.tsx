@@ -18,8 +18,8 @@ function HomeLink({ active }: { active: boolean }) {
       aria-current={active ? "page" : undefined}
       data-active={active ? "true" : undefined}
       className={cn(
-        "nav-underline relative inline-flex min-h-10 items-center text-[0.95rem] font-medium transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        active ? "text-text" : "text-text-muted hover:text-text",
+        "inline-flex min-h-11 items-center text-[0.95rem] font-[450] tracking-[-0.01em] transition-[color,transform] duration-[140ms] ease-out will-change-transform active:scale-[0.96] active:duration-100 focus-visible:outline-none",
+        active ? "text-text" : "text-text-soft hover:text-text",
       )}
     >
       Home
@@ -32,19 +32,17 @@ export function SiteHeader() {
   const homeActive = pathname === "/";
 
   return (
-    <header className="relative z-40 w-full py-2">
-      <Container size="content">
-        <div className="hidden min-h-[var(--header-height)] items-center md:flex">
-          <div className="mx-auto flex w-full max-w-[var(--max-width-prose)] items-center justify-between gap-6">
-            <HomeLink active={homeActive} />
-            <div className="flex items-center gap-2">
-              <SiteNav items={navigationItems} />
-              <ThemeToggle />
-            </div>
+    <header className="site-header w-full py-2.5 sm:py-3">
+      <Container size="prose">
+        <div className="hidden items-center justify-between gap-8 md:flex">
+          <HomeLink active={homeActive} />
+          <div className="flex items-center gap-2">
+            <SiteNav items={navigationItems} />
+            <ThemeToggle />
           </div>
         </div>
 
-        <div className="flex min-h-[var(--header-height)] items-center justify-between gap-4 md:hidden">
+        <div className="flex items-center justify-between gap-6 sm:gap-8 md:hidden">
           <HomeLink active={homeActive} />
           <div className="flex items-center gap-1">
             <ThemeToggle />
