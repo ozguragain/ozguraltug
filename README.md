@@ -11,16 +11,15 @@ This repository contains the source code for my personal website, portfolio, and
 
 ## Overview
 
-- `components/*` - The different components the whole site uses.
-- `lib/*` - Small snippets of code used around and about on the website.
-- `pages/writing/*` - Static pre-rendered blog pages using MDX w/ next-mdx-remote.
-- `pages/*` - All other static pages.
-- `public/*` - Static assets including fonts and images.
-- `styles/*` - Global styles live here, most things are done w/ Vanilla Tailwind CSS but some niche things exist here.
+- `src/app/*` - Route segments. `writing/[slug]` renders one markdown post per build.
+- `src/components/*` - The different components the whole site uses.
+- `src/lib/*` - The markdown pipeline: mdp output, syntax highlighting, frontmatter, post discovery.
+- `src/content/writing/*` - The posts themselves, one `.md` file each.
+- `src/app/globals.css` - Design tokens and the Tailwind layers.
 
 ## Running Locally
 
-This application requires Node version: 14.15.3 or higher.
+This application requires Node version: 20.9 or higher (Next 16's floor).
 
 ```bash
 npm install
@@ -29,14 +28,12 @@ npm run dev
 
 ## Updating mdp
 
-Markdown is compiled by [`@ozguragain/mdp`](https://www.npmjs.com/package/@ozguragain/mdp).
-Its releases are cut from the [mdp repository](https://github.com/ozguragain/mdp);
-upgrade here with:
+Markdown is compiled by [`@ozguragain/mdp`](https://www.npmjs.com/package/@ozguragain/mdp),
+released from the [mdp repository](https://github.com/ozguragain/mdp):
 
 ```bash
 npm i @ozguragain/mdp@latest
 ```
 
-The package carries the compiler binaries for darwin-arm64 and linux-x64. On any
-other platform, build one in the mdp checkout (`scripts/build-binaries.sh`) and
-point `MDP_BIN` at it.
+The package ships the compiler for darwin-arm64 and linux-x64. On any other
+platform, build one in the mdp checkout and point `MDP_BIN` at it.
