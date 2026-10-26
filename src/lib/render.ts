@@ -1,4 +1,4 @@
-import { compile } from "mdp";
+import { compileHtml } from "@ozguragain/mdp";
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -45,7 +45,7 @@ const processor = unified()
  * work; rehype-pretty-code colours the code blocks it emits.
  */
 export async function renderPost(markdown: string): Promise<string> {
-  const { html } = compile(markdown);
+  const html = compileHtml(markdown);
   const tree = await processor.run(processor.parse(html) as never);
   return toHtml(tree as never);
 }

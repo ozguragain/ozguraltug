@@ -7,7 +7,7 @@ This repository contains the source code for my personal website, portfolio, and
 - Framework: Next.js
 - Deployment: Vercel
 - Styling: Tailwind CSS
-- Markdown: [mdp](https://github.com/ozguragain/mdp), a Go compiler pinned to a repository archive
+- Markdown: [@ozguragain/mdp](https://www.npmjs.com/package/@ozguragain/mdp), a Go markdown compiler
 
 ## Overview
 
@@ -29,13 +29,14 @@ npm run dev
 
 ## Updating mdp
 
-`mdp` is installed from a commit archive, not from the npm registry, so a new
-release is a new pinned URL. Rebuild the platform binaries in the mdp checkout
-(`scripts/build-binaries.sh`), commit them, then point this repo at the commit:
+Markdown is compiled by [`@ozguragain/mdp`](https://www.npmjs.com/package/@ozguragain/mdp).
+Its releases are cut from the [mdp repository](https://github.com/ozguragain/mdp);
+upgrade here with:
 
 ```bash
-npm i https://codeload.github.com/ozguragain/mdp/tar.gz/<commit-sha>
+npm i @ozguragain/mdp@latest
 ```
 
-The archive host is allowlisted in `.npmrc`: npm 12 refuses remote packages
-from unlisted hosts.
+The package carries the compiler binaries for darwin-arm64 and linux-x64. On any
+other platform, build one in the mdp checkout (`scripts/build-binaries.sh`) and
+point `MDP_BIN` at it.

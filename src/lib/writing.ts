@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { parseFrontmatter, readFrontmatter } from "mdp";
+import { parseFrontmatter, readFrontmatter } from "@ozguragain/mdp";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/writing");
 

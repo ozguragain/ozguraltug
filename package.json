@@ -10,8 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@ozguragain/mdp": "^0.1.0",
     "hast-util-to-html": "^9.0.5",
-    "mdp": "https://codeload.github.com/ozguragain/mdp/tar.gz/25da95959a5cb2dd51383f6c6f70a4d4a74e4880",
     "next": "^16.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
