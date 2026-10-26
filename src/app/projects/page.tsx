@@ -34,7 +34,7 @@ export default function ProjectsPage() {
           <header className="space-y-4">
             <h1 className="type-display">Projects</h1>
             <p className="text-[0.92rem] text-text-muted sm:text-[0.96rem]">
-              Selected things I&apos;ve built. More coming.
+              Selected things I&apos;ve built.
             </p>
           </header>
 

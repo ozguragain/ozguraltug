@@ -43,10 +43,10 @@ export function SiteNav({
                 aria-current={isActive ? "page" : undefined}
                 data-active={isActive ? "true" : undefined}
                 className={cn(
-                  "relative inline-flex min-h-11 items-center text-[0.95rem] font-[450] transition-[color,transform] duration-fast ease-out hover:will-change-transform active:scale-[0.96] active:duration-instant active:will-change-transform focus-visible:outline-none after:pointer-events-none after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-full after:origin-left after:transition-transform after:duration-base after:ease-out-strong after:content-['']",
+                  "inline-flex min-h-11 items-center text-[0.95rem] font-[450] underline-offset-[2px] transition-colors duration-fast ease-out active:scale-[0.96] active:duration-instant focus-visible:outline-none",
                   isActive
-                    ? "text-text after:scale-x-100 after:bg-text/60"
-                    : "text-text-soft hover:text-text after:scale-x-0 after:bg-text/60",
+                    ? "text-text underline decoration-text/60"
+                    : "text-text-soft hover:text-text hover:underline hover:decoration-text/60",
                 )}
               >
                 {item.label}
